@@ -45,7 +45,9 @@ Then /^I am returned to the results page$/ do
   @browser.div(id: 'atfResults').wait_until_present
 end
 
-# 
+# --------------------------------------------------------------------------
+# Original Solution (Just using Watir)
+#
 # browser = Watir::Browser.new :chrome
 # browser.goto('https://www.amazon.co.uk/')
 #

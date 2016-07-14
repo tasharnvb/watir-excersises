@@ -12,7 +12,6 @@ Given /^I am on the facebook home page$/ do
 end
 
 When /^I enter my details and click login$/ do
-  # binding.pry
   @browser.text_field(id: 'email').set('teamhero@tiscali.co.uk')
   @browser.text_field(id: 'pass').set('devante1')
   @browser.button(value: 'Log In').click
@@ -23,8 +22,11 @@ Then /^I am logged in$/ do
 end
 
 When /^I try to go my profile page$/ do
+  # This does not work
   if @browser.div(class: '_3ixn').exists?
     @browser.div(class: '_3ixn').click
+  elsif @browser.alert.exists?
+    @browser.alert.close
   end
 
   @browser.div(id: 'pagelet_bluebar').a(href: 'https://www.facebook.com/tasharn.vidalbrown').click
@@ -34,6 +36,9 @@ Then /^I am sent to my profile page$/ do
   @browser.div(class: 'coverBorder').wait_until_present
 end
 
+# --------------------------------------------------------------------------
+# Original Solution (Just using Watir)
+#
 # browser = Watir::Browser.new :chrome
 # browser.goto('https://en-gb.facebook.com/')
 #

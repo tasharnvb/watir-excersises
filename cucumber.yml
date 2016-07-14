@@ -1,11 +1,12 @@
-default: --profile amazon
+# Not working for some reason
+default: --profile amazon_a --profile amazon_b
 
-# works
+# These all work
 complete: --tags @complete
 testing: --tags @testing
 wip: --tags @wip
 amazon_a: --tags @amazon_a
 amazon_b: --tags @amazon_b
 facebook: --tags @facebook
-amazon: --tags @amazon_a,@amazon_b # Spaces not allowed
+amazon: --tags @amazon_a,@amazon_b # Spaces are not allowed
 all: --tags @testing,@complete,@wip

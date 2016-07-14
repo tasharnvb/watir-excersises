@@ -15,7 +15,6 @@ Feature: Amazon Navigation
     When I click on the last result
     Then I am sent to the book's details page
 
-  # Not sure about this one
   @complete
   Scenario: Go back from details
     Given I am on a book's details page
