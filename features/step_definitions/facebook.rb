@@ -6,9 +6,34 @@
 # 4. Go to your profile page
 # 5. Verify if you're in your profile page
 
-# require 'pry'
-# require 'watir-webdriver'
-#
+Given /^I am on the facebook home page$/ do
+  @browser.goto('https://www.facebook.com/')
+  @browser.div(id: 'registration_container').wait_until_present
+end
+
+When /^I enter my details and click login$/ do
+  # binding.pry
+  @browser.text_field(id: 'email').set('teamhero@tiscali.co.uk')
+  @browser.text_field(id: 'pass').set('devante1')
+  @browser.button(value: 'Log In').click
+end
+
+Then /^I am logged in$/ do
+  @browser.textarea(title: 'What\'s on your mind?').wait_until_present
+end
+
+When /^I try to go my profile page$/ do
+  if @browser.div(class: '_3ixn').exists?
+    @browser.div(class: '_3ixn').click
+  end
+
+  @browser.div(id: 'pagelet_bluebar').a(href: 'https://www.facebook.com/tasharn.vidalbrown').click
+end
+
+Then /^I am sent to my profile page$/ do
+  @browser.div(class: 'coverBorder').wait_until_present
+end
+
 # browser = Watir::Browser.new :chrome
 # browser.goto('https://en-gb.facebook.com/')
 #

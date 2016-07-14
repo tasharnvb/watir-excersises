@@ -1,0 +1,11 @@
+default: --profile amazon
+
+# works
+complete: --tags @complete
+testing: --tags @testing
+wip: --tags @wip
+amazon_a: --tags @amazon_a
+amazon_b: --tags @amazon_b
+facebook: --tags @facebook
+amazon: --tags @amazon_a,@amazon_b # Spaces not allowed
+all: --tags @testing,@complete,@wip

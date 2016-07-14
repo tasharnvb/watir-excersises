@@ -1,12 +1,13 @@
+@facebook
 Feature: Facebook
 
-  Scenario: Login
+  Background: Login
     Given I am on the facebook home page
     When I enter my details and click login
     Then I am logged in
 
+  @complete
   Scenario: View profile
-    Given I am on the facebook home page
-    And I am logged into facebook
-    When I try to my profile page
+    And I am logged in
+    When I try to go my profile page
     Then I am sent to my profile page

@@ -1,5 +1,7 @@
-Feature: Amazon result listing
+@amazon_b
+Feature: Amazon Result Listing
 
+  @wip
   Scenario: Output results to terminal
     Given I am on the amazon home page
     And I search for Ruby

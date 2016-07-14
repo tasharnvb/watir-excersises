@@ -9,15 +9,17 @@
 
 Given /^I am on the amazon home page$/ do
   @browser.goto('https://www.amazon.co.uk/')
-  raise unless @browser.url == 'https://www.amazon.co.uk/'
+  @browser.div(id: 'gw-desktop-herotator').wait_until_present
 end
 
 And /^I search for (.+)$/ do |search_term|
   @browser.text_field(id: 'twotabsearchtextbox').set(search_term)
   @browser.button(class: 'nav-input').click
+  @browser.div(id: 'atfResults').wait_until_present
 end
 
 When /^I click on the (.+) result$/ do |result_number|
+  # Using this for the first result and last result scenarios
   if result_number == 'first'
     @browser.li(id: 'result_0').a.click
   elsif result_number == 'last'
@@ -29,6 +31,21 @@ Then /^I am sent to the book's details page$/ do
   @browser.span(id: 'productTitle').wait_until_present
 end
 
+Given /^I am on a book's details page$/ do
+  @browser.button(class: 'nav-input').click
+  @browser.li(id: 'result_0').a.click
+  @browser.span(id: 'productTitle').wait_until_present
+end
+
+And /^I click back$/ do
+  @browser.a(id: 'breadcrumb-back-link').click
+end
+
+Then /^I am returned to the results page$/ do
+  @browser.div(id: 'atfResults').wait_until_present
+end
+
+# 
 # browser = Watir::Browser.new :chrome
 # browser.goto('https://www.amazon.co.uk/')
 #
