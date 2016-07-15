@@ -22,13 +22,17 @@ Then /^I am logged in$/ do
 end
 
 When /^I try to go my profile page$/ do
-  # This does not work
+  # binding.pry
+
+  # Chrome's alert box comes up to ask about notifications
+  # This loop makes sure that it disappears (by clicking it)
   if @browser.div(class: '_3ixn').exists?
-    @browser.div(class: '_3ixn').click
-  elsif @browser.alert.exists?
-    @browser.alert.close
+    while @browser.div(class: '_3ixn').exists?
+      @browser.div(class: '_3ixn').click
+    end
   end
 
+  # binding.pry
   @browser.div(id: 'pagelet_bluebar').a(href: 'https://www.facebook.com/tasharn.vidalbrown').click
 end
 

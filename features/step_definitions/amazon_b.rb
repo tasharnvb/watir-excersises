@@ -8,8 +8,9 @@
 
 When /^I try to output the results in the terminal$/ do
   puts 'Results:'
+  # binding.pry
   # Get the books and loop through them (Each book is a list item)
-  @browser.lis(class: 's-result-item celwidget').each_with_index do |book, index|
+  @browser.lis(class: /s-result-item/).each_with_index do |book, index|
     # One of the list items is Shop by Category which is not a book so this loop ignores that item
     unless book.h2.text == 'Shop by Category'
       # Title of the book

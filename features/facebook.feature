@@ -7,7 +7,7 @@ Feature: Facebook
     When I enter my details and click login
     Then I am logged in
 
-  @wip
+  @complete
   Scenario: View profile
     And I am logged in
     When I try to go my profile page
