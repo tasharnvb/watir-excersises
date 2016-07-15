@@ -26,7 +26,7 @@ When /^I try to output the results in the terminal$/ do
 end
 
 Then /^the book titles appear in the terminal$/ do
-  pending
+  
 end
 
 # --------------------------------------------------------------------------
